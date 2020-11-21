@@ -19,17 +19,26 @@ const App = () => {
   }, [])
 
   console.log('render', countries.length, 'countries')
+
   const handleSearch = (event) => {
     console.log(event.target.value);
     setSearch(event.target.value);
   }
 
+  const handleClick = (event) => {
+    console.log(event)
+    setSearch(event);
+
+  }
+
   return (
     <div>
       <SearchForm search={search} handleSearch={handleSearch} />
-      <ShownCountries countries={countries} search={search} />
+      <ShownCountries countries={countries} search={search} handleClick={handleClick}/>
     </div>
   )
 }
 
 export default App;
+
+
