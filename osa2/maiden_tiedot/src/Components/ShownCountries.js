@@ -3,6 +3,7 @@ import React, {useState} from 'react'
 const ShownCountries = (props) => {
   const toFilter = props.countries;
   const keyWords = props.search;
+  const weather = props.weather;
   console.log('toFilter: ', toFilter);
   console.log('keyWords: ', keyWords);
   
@@ -41,6 +42,16 @@ const ShownCountries = (props) => {
   }
 }
 
+
+/**
+ * Hakee maan säätiedot
+ * @param {*} capital 
+ */
+
+ function showWeather(capital) {
+   
+ }
+
 /**
  * Hakee yksittäisen maan yksityiskohtaiset tiedot
  */
@@ -52,8 +63,8 @@ function showDetails(shown) {
       {shown.map(foundCountries => <p key={foundCountries.alpha3Code}>Capital: {foundCountries.capital}</p>)}
       {shown.map(foundCountries => <p key={foundCountries.alpha3Code}>Population: {foundCountries.population}</p>)}
       <h2>Languages</h2>
-      {shown.map(foundCountries => <ul key={foundCountries.alpha3Code}>{foundCountries.languages.map(languages => <li>{languages.name}</li>)}</ul>)}
-      {shown.map(foundCountries => <img src={foundCountries.flag} alt="flag" height="128"></img>)}
+      {shown.map(foundCountries => <ul key={foundCountries.alpha3Code}>{foundCountries.languages.map(languages => <li key={foundCountries.alpha3Code}>{languages.name}</li>)}</ul>)}
+      {shown.map(foundCountries => <img key={foundCountries.name}src={foundCountries.flag} alt="flag" height="128"></img>)}
     </div>
   )
 }
